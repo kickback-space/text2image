@@ -19,7 +19,16 @@ Other decisions
 - Will it be deployed as a serverless cloud function?
 - Are there any additional requirements?
 
-## Usage
-````
+## Build
+```
+docker build --pull -f Dockerfile -t text2image:latest .
+```
+
+## Run
+```
+docker-compose up
+```
+tip: to run in background
+```
 docker-compose up -d
-````
+```
