@@ -1,9 +1,6 @@
 version: '3.3'
 services:
   text_2_image:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: text2image:latest
     deploy:
       resources:
