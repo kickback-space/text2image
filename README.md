@@ -18,3 +18,14 @@ This Service API will be built using flask, the initial design is to create an A
 Other decisions
 - Will it be deployed as a serverless cloud function?
 - Are there any additional requirements?
+
+## Usage
+- Clean Up Resources
+  ````
+  make clean
+  ````
+- Build the image
+  ```
+  make build
+  ```
+- R

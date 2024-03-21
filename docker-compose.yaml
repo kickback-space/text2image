@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  text_2_image:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: text2image:latest
+    ports:
+      - "5000:5000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=0,1
+    stdin_open: true
+    tty: true
+    network_mode: host
