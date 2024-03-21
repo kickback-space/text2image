@@ -5,8 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: text2image:latest
-    ports:
-      - "5000:5000"
     deploy:
       resources:
         reservations:
