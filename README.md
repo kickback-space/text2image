@@ -20,12 +20,6 @@ Other decisions
 - Are there any additional requirements?
 
 ## Usage
-- Clean Up Resources
-  ````
-  make clean
-  ````
-- Build the image
-  ```
-  make build
-  ```
-- R
+````
+docker compose up
+````
