@@ -6,12 +6,14 @@ import base64
 
 app = Flask(__name__)
 
+# Load the GPU first when the applications starts
+pipe = StableDiffusionXLPipeline.from_pretrained("etri-vilab/koala-700m-llava-cap", torch_dtype=torch.float16, variant="fp16", use_safetensors=True)
+pipe = pipe.to("cuda")
+
 
 @app.route('/api/v1/text-to-image/', methods=['GET', 'POST'])
 def text_to_image():
     try:
-        pipe = StableDiffusionXLPipeline.from_pretrained("etri-vilab/koala-700m-llava-cap", torch_dtype=torch.float16)
-        pipe = pipe.to("cuda")
         if request.method == 'POST':
             prompt = request.get_json()['prompt']
             image = pipe(prompt=prompt, width=1024, height=1024).images[0]
