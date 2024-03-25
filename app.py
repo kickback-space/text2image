@@ -24,6 +24,8 @@ def load_pipeline():
 def process_image(prompt: str):
     load_pipeline()
     image = pipe(prompt=prompt, width=1024, height=1024).images[0]
+
+    torch.cuda.empty_cache()
     return image
 
 @app.route('/api/v1/text-to-image/', methods=['POST'])
