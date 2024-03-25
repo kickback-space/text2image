@@ -10,16 +10,18 @@ app = Flask(__name__)
 pipe = None
 
 
-if pipe is None:
-    pipe = StableDiffusionXLPipeline.from_pretrained(
-        "etri-vilab/koala-700m-llava-cap",
-        torch_dtype=torch.float16
-    )
-    # With this setup, we reduce the memory requirement to 15.6GB while reducing the inference latency at the same time.
-    # pipe.vae = AutoencoderTiny.from_pretrained("madebyollin/taesdxl", torch_dtype=torch.float16)
-    pipe.to("cuda")
+def load_pipeline():
+    if pipe is None:
+        pipe = StableDiffusionXLPipeline.from_pretrained(
+            "etri-vilab/koala-700m-llava-cap",
+            torch_dtype=torch.float16
+        )
+        # With this setup, we reduce the memory requirement to 15.6GB while reducing the inference latency at the same time.
+        # pipe.vae = AutoencoderTiny.from_pretrained("madebyollin/taesdxl", torch_dtype=torch.float16)
+        pipe.to("cuda")
 
 def process_image(prompt: str):
+    load_pipeline()
     image = pipe(prompt=prompt, width=1024, height=1024).images[0]
     return image
 
