@@ -7,4 +7,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+# Install the C compiler (GCC) in the Docker image
+RUN apt-get update && apt-get install -y gcc
+
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
