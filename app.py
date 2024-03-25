@@ -11,6 +11,7 @@ pipe = None
 
 
 def load_pipeline():
+    global pipe
     if pipe is None:
         pipe = StableDiffusionXLPipeline.from_pretrained(
             "etri-vilab/koala-700m-llava-cap",
