@@ -55,10 +55,9 @@ def text_to_image():
             images.save(buffered, format="JPEG")
             img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
             return jsonify({
-                "data": {
                 "status": "success",
                 "output": img_str,
-            }})
+            })
     except Exception as e:
         print("ERROR", str(e))
         return jsonify({"error": str(e)}), 500
