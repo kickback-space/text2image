@@ -11,6 +11,8 @@ app = Flask(__name__)
 CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 
+API_KEY = "add_key"
+
 pipe = None
 lock = Lock()
 
@@ -29,6 +31,11 @@ def text_to_image():
     data = request.get_json()
     if not data:
         return jsonify({"error": "No data provided"}), 400
+
+    api_key = data.get('API_KEY')
+
+    if not api_key or api_key != API_KEY:
+        return jsonify({"error": "Unauthorized"}), 401
 
     prompt = data.get("prompt")
     negative_prompt = data.get("negative_prompt", "")
