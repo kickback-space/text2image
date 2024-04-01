@@ -11,14 +11,6 @@ This Service API will be built using flask, the initial design is to create an A
   - image: binary?? 1024 X 1024
 
 
-## Nice to have
-- Test the API and make sure the response is as expected
-- Create a CI/CD pipeline to improve the overall feature to product workflow
-
-Other decisions
-- Will it be deployed as a serverless cloud function?
-- Are there any additional requirements?
-
 ## Build
 ```
 docker build --pull -f Dockerfile -t text2image:latest .
