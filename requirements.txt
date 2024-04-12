@@ -17,7 +17,7 @@ geventhttpclient==2.0.12
 greenlet==3.0.3
 gunicorn==21.2.0
 huggingface-hub==0.21.4
-idna==3.6
+idna==3.7
 importlib_metadata==7.0.2
 itsdangerous==2.1.2
 Jinja2==3.1.3
